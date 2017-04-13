@@ -1,0 +1,12 @@
+Column,Start,End
+ID,0,1
+First_Name,2,11
+Last_Name,12,21
+Age,22,24
+Salary,25,30
+Language,31,40
+Street1,41,50
+Street2,51,60
+City,61,70
+State,71,72
+Country,73,87
