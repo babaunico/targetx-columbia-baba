@@ -26,7 +26,7 @@ public class FieldLookup {
 	
 	private FieldLookup() throws IOException {	
 		
-		csvdefFile = "resource/csvdef.csv";
+		csvdefFile = "resource/csvdef1.csv";
 		File file = new File(csvdefFile);
 		
 		if(file.exists()) {
