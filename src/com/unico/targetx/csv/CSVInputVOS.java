@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ public class CSVInputVOS {
 	private ICsvMapReader mapReader = null;
 	private Map<String, String> row;
 	private List<Map<String, String>> parsedRows;
-	
+
 	public CSVInputVOS(String filePath) throws IOException { 
 		
 		file = new File(filePath);
@@ -42,7 +43,7 @@ public class CSVInputVOS {
 		}
 	} 
 	
-	public Map<String, String> getRowForGivenId(int rowId) {
+	public Map<String, String> getRowForGivenIndex(int rowId) {
 		
 		Map<String, String> row = null;
 		try {
@@ -52,5 +53,22 @@ public class CSVInputVOS {
 		}
 		
 		return row;
+	}
+	
+	public Collection<String> getRowForGivenID(String id) {
+		try {
+			for(Map<String, String> parseRow : parsedRows) {
+				for (Map.Entry<String, String> entry : parseRow.entrySet()) {
+					if(entry.getKey().contains("ID") && (entry.getValue().contains(id))) {
+						//System.out.println(parseRow.values());
+						return parseRow.values();
+					}
+				}
+			}
+		} catch (NullPointerException ae) {
+			System.out.println("Given element does not exist..");
+		}
+		
+		return null;
 	}
 }
